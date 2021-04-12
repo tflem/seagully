@@ -55,4 +55,11 @@ class User extends Authenticatable
             User::class, 'followers', 'following_id', 'user_id'
         );
     }
+
+    public function cawsFromFollowing()
+    {
+        return $this->hasManyThrough(
+            Caw::class, Follower::class, 'user_id', 'user_id', 'id', 'following_id'
+        );
+    }
 }
